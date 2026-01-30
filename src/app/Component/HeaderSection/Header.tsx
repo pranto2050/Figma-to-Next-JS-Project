@@ -26,7 +26,7 @@ const Header = () => {
   const [activePath, setActivePath] = useState(pathname); // initialize with current page
   const router = useRouter();
 
-  // Update activePath when route changes (important for client-side navigation)
+  // Update activePath when route changes
   useEffect(() => {
     setActivePath(pathname);
   }, [pathname]);
@@ -65,13 +65,13 @@ const Header = () => {
                     <button
                       key={index}
                       onClick={() => handleNavClick(item.path)}
-                      className={`px-4 py-2 rounded-lg transition-colors
-                        ${isActive ? "bg-[#FF8000] text-white" : "hover:bg-black/5 text-black"}
+                      className={`px-4 py-2 rounded-lg transition-colors flex items-center
                       `}
                     >
                       <span className="[font-family:'Salsa',Helvetica] font-normal text-lg">
                         {item.label}
                       </span>
+                      {/* No icons on desktop */}
                     </button>
                   );
                 })}
@@ -133,6 +133,7 @@ const Header = () => {
             />
 
             {/* Mobile Navigation */}
+            {/* Mobile Navigation */}
             <nav className="flex flex-col gap-4 w-full max-w-[260px]">
               {navigationItems.map((item, index) => {
                 const isActive = activePath === item.path;
@@ -141,16 +142,17 @@ const Header = () => {
                     key={index}
                     onClick={() => handleNavClick(item.path)}
                     className={`flex items-center justify-end w-full px-6 py-4 rounded-full transition-colors
-                      ${isActive ? "bg-[#FF8000] text-white" : "text-black hover:bg-black/5"}
-                    `}
+          ${isActive ? "bg-[#FF8000] text-white" : "text-black hover:bg-black/5"}
+        `}
                   >
                     <span className="[font-family:'Salsa',Helvetica] text-lg text-right">
                       {item.label}
                     </span>
+                    {/* Mobile-only icon with 20px gap */}
                     <img
                       src={item.icon.src}
                       alt={item.label}
-                      className="w-5 h-5 ml-[20px]"
+                      className={`w-5 h-5 lg:hidden ml-[30px] ${isActive ? "filter brightness-0 invert" : ""}`}
                     />
                   </button>
                 );
