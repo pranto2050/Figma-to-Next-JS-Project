@@ -1,0 +1,25 @@
+<svg width="17" height="257" viewBox="0 0 17 257" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line x1="9" y1="0.5" x2="9.00001" y2="256.5" stroke="url(#paint0_linear_95_513)"/>
+<circle cx="8.5" cy="8.5" r="8" stroke="url(#paint1_linear_95_513)"/>
+<circle cx="8.5" cy="56.5" r="8" stroke="#FF9E3D"/>
+<circle cx="8.5" cy="104.5" r="8" stroke="#FF9E3D"/>
+<rect x="0.5" y="144.5" width="16" height="16" rx="8" stroke="#FF8000"/>
+<circle cx="8.5" cy="152.5" r="5" fill="#FF8000" stroke="#FF9E3D"/>
+<circle cx="8.5" cy="200.5" r="8" stroke="#FF9E3D"/>
+<circle cx="8.5" cy="248.5" r="8" stroke="url(#paint2_linear_95_513)"/>
+<defs>
+<linearGradient id="paint0_linear_95_513" x1="8" y1="0.5" x2="8.00001" y2="256.5" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFC081" stop-opacity="0"/>
+<stop offset="0.5" stop-color="#FFC081"/>
+<stop offset="1" stop-color="#FFC081" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="paint1_linear_95_513" x1="8.5" y1="0.5" x2="8.5" y2="16.5" gradientUnits="userSpaceOnUse">
+<stop offset="0.2" stop-color="#FF9E3D" stop-opacity="0"/>
+<stop offset="1" stop-color="#FF9E3D"/>
+</linearGradient>
+<linearGradient id="paint2_linear_95_513" x1="8.5" y1="240.5" x2="8.5" y2="256.5" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FF9E3D"/>
+<stop offset="0.8" stop-color="#FF9E3D" stop-opacity="0"/>
+</linearGradient>
+</defs>
+</svg>

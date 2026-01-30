@@ -1,0 +1,267 @@
+"use client";
+
+import React, { useState } from "react";
+import Image from "next/image";
+import div1CoverImg from "../../../../public/Our Mission Page/div1.png";
+import div2CoverImg from "../../../../public/Our Mission Page/div2.png";
+import div3CoverImg from "../../../../public/Our Mission Page/div3.png";
+import div4CoverImg from "../../../../public/Our Mission Page/div4.png";
+import div5CoverImg from "../../../../public/Our Mission Page/div5.png";
+import innerDevLeftImg from "../../../../public/Our Mission Page/divLeftImg.png";
+import innerDevright from "../../../../public/Our Mission Page/div img 1.png";
+// No longer need to import BlackAndDotImg if using it in CSS background
+
+export const Experience = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  return (
+    <div>
+     <div className="mt-20 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+      
+        {/* ===================== 2nd section ====================== */}
+      <div className="relative w-full z-50">
+        <div
+          className="w-full flex flex-col items-center justify-center pt-20 px-20"
+          style={{
+            backgroundImage: "url('/Our Mission Page/Black and Dot img.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          <h1 className="text-white font-bold text-4xl">
+            We Redesigned the Entire <i> Experience </i>
+          </h1>
+
+          <section className="w-full py-10">
+            {/* Computer and Tablet responsive */}
+            {/* ====================== Grid Container ====================== */}
+            <div className="grid gap-4 max-w-7xl max-h-4xl mx-auto text-black grid-cols-4 auto-rows-[250px]">
+              {/* ================= div1 ================= */}
+              <div
+                className="row-start-1 row-end-3 col-start-1 col-end-2 rounded-2xl p-6 flex flex-col justify-end"
+                style={{
+                  backgroundImage: `url(${div1CoverImg.src})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                }}
+              >
+                <h1 className="text-2xl font-semibold">
+                  Protective Sheet Included
+                </h1>
+                <p className="mt-2 text-sm opacity-80">
+                  Use markers with confidence, no mess underneath.
+                </p>
+              </div>
+
+              {/* ================= div2 ================= */}
+              <div
+                className="row-start-1 row-end-2 col-start-2 col-end-3 rounded-2xl p-6 flex flex-col"
+                style={{
+                  backgroundImage: `url(${div2CoverImg.src})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                }}
+              >
+                <h1 className="text-4xl font-bold">200</h1>
+                <h2 className="text-lg font-semibold mt-1">Gsm Thick Paper</h2>
+                <p className="mt-2 text-sm opacity-80">
+                  Premium pages that keep colors vibrant with zero
+                  bleed-through.
+                </p>
+              </div>
+
+              {/* ================= div3 ================= */}
+              <div
+                className="row-start-1 row-end-2 col-start-3 col-end-5 rounded-2xl p-6 flex gap-6 items-center"
+                style={{
+                  backgroundImage: `url(${div3CoverImg.src})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                }}
+              >
+                {/* Left Image */}
+                <div
+                  className="w-50 h-50 rounded-lg flex items-center justify-center text-xs"
+                  style={{
+                    backgroundImage: `url(${innerDevLeftImg.src})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                  }}
+                ></div>
+
+                {/* Right Content */}
+                <div className="flex-1">
+                  <h1 className="text-xl font-semibold">Single-Sided Pages</h1>
+                  <p className="mt-2 text-sm opacity-80">
+                    Each illustration is printed on one side only, so you can
+                    colour without worrying about the next page.
+                  </p>
+                </div>
+              </div>
+              {/* ================= div4 ================= */}
+              <div
+                className="row-start-2 row-end-3 col-start-2 col-end-4 rounded-2xl p-6"
+                style={{
+                  backgroundImage: `url(${div4CoverImg.src})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                }}
+              >
+                <h1 className="text-2xl font-semibold">
+                  Modern, Gender-Neutral Illustrations
+                </h1>
+                <p className="mt-2 text-sm opacity-80">
+                  Thoughtfully designed artwork with a clean, contemporary style
+                  that’s enjoyable for anyone.
+                </p>
+              </div>
+
+              {/* ================= div5 ================= */}
+              <div
+                className="row-start-2 row-end-3 col-start-4 col-end-5 rounded-2xl p-6 flex gap-4 items-center flex-col"
+                style={{
+                  backgroundImage: `url(${div5CoverImg.src})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                }}
+              >
+                {/* Left Image */}
+                <div className="w-16 h-16 rounded-lg flex items-center justify-center text-xs">
+                  <img src={innerDevright.src} alt="Inner Div Right" />
+                </div>
+
+                {/* Right Content */}
+                <div>
+                  <h1 className="text-lg font-semibold">
+                    Made for Quiet Breaks
+                  </h1>
+                  <p className="mt-1 text-sm opacity-80">
+                    Created to help you pause, unplug, and enjoy a quiet
+                    creative moment away from screens.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile Device responsive  */}
+            <div>
+              <div className="grid grid-cols-2 gap-4 max-w-7xl mx-auto auto-rows-[180px]">
+
+  {/* ================= div1 (LEFT BIG) ================= */}
+  <div
+    className="row-span-2 rounded-2xl p-6 flex flex-col justify-end text-white"
+    style={{
+      backgroundImage: `url(${div1CoverImg.src})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+    }}
+  >
+    <h1 className="text-2xl font-semibold">
+      Protective Sheet Included
+    </h1>
+    <p className="mt-2 text-sm opacity-80">
+      Use markers with confidence, no mess underneath.
+    </p>
+  </div>
+
+  {/* ================= div2 (RIGHT TOP) ================= */}
+  <div
+    className="rounded-2xl p-6 text-white flex flex-col"
+    style={{
+      backgroundImage: `url(${div2CoverImg.src})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+    }}
+  >
+    <h1 className="text-4xl font-bold">200</h1>
+    <h2 className="text-lg font-semibold mt-1">Gsm Thick Paper</h2>
+    <p className="mt-2 text-sm opacity-80">
+      Premium pages with zero bleed-through.
+    </p>
+  </div>
+
+  {/* ================= div5 (RIGHT BOTTOM) ================= */}
+  <div
+    className="rounded-2xl p-6 flex flex-col items-center gap-4 text-white"
+    style={{
+      backgroundImage: `url(${div5CoverImg.src})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+    }}
+  >
+    <div className="w-16 h-16">
+      <img src={innerDevright.src} alt="Inner Div Right" />
+    </div>
+    <div className="text-center">
+      <h1 className="text-lg font-semibold">
+        Made for Quiet Breaks
+      </h1>
+      <p className="mt-1 text-sm opacity-80">
+        Pause, unplug, and enjoy a creative moment.
+      </p>
+    </div>
+  </div>
+
+  {/* ================= div3 (FULL WIDTH) ================= */}
+  <div
+    className="col-span-2 rounded-2xl p-6 flex gap-4 items-center text-white"
+    style={{
+      backgroundImage: `url(${div3CoverImg.src})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+    }}
+  >
+    <div
+      className="w-20 h-20 rounded-lg"
+      style={{
+        backgroundImage: `url(${innerDevLeftImg.src})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    />
+    <div>
+      <h1 className="text-xl font-semibold">Single-Sided Pages</h1>
+      <p className="mt-2 text-sm opacity-80">
+        Each illustration is printed on one side only.
+      </p>
+    </div>
+  </div>
+
+  {/* ================= div4 (FULL WIDTH) ================= */}
+  <div
+    className="col-span-2 rounded-2xl p-6 text-white"
+    style={{
+      backgroundImage: `url(${div4CoverImg.src})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+    }}
+  >
+    <h1 className="text-2xl font-semibold">
+      Modern, Gender-Neutral Illustrations
+    </h1>
+    <p className="mt-2 text-sm opacity-80">
+      Thoughtfully designed artwork with a clean, contemporary style.
+    </p>
+  </div>
+
+</div>
+
+            </div>
+          </section>
+        </div>
+      </div>
+     </div>
+    </div>
+  );
+};
