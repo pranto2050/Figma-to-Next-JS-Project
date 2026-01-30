@@ -43,7 +43,7 @@ const Header = () => {
     <div>
       <header className="relative w-full px-4 md:px-[65px] py-2">
         <div className="relative w-full bg-[#00000000] md:rounded-[100px] md:overflow-visible md:backdrop-blur-[0.2px] md:backdrop-brightness-[110%] md:shadow-[inset_0_1px_0_rgba(255,255,255,0.40),inset_1px_0_0_rgba(255,255,255,0.32),inset_0_-1px_1px_rgba(0,0,0,0.13),inset_-1px_0_1px_rgba(0,0,0,0.11)] z-30">
-          <div className="relative w-full  md:bg-[#ffffff03] rounded-[100px]">
+          <div className="relative w-full  bg-[#ffffff03] rounded-[100px]">
             <div className="flex items-center justify-between h-full px-4 md:px-[65px] py-4">
               {/* Logo */}
               <button
@@ -65,7 +65,7 @@ const Header = () => {
                     <button
                       key={index}
                       onClick={() => handleNavClick(item.path)}
-                      className={`px-4 py-2 rounded-lg transition-colors flex items-center
+                      className={`px-4 py-2 rounded-lg flex items-center
                       `}
                     >
                       <span className="[font-family:'Salsa',Helvetica] font-normal text-lg">
