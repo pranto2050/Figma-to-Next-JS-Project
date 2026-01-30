@@ -8,7 +8,7 @@ import vanishIcon from "../../../../public/Icon/gitlab.svg";
 import contactIcon from "../../../../public/Icon/phone-call.svg";
 
 import { ChevronDown, User, Library, Menu, X } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter, usePathname } from "next/navigation";
 
 const navigationItems = [
@@ -26,9 +26,32 @@ const Header = () => {
   const [activePath, setActivePath] = useState(pathname);
   const router = useRouter();
 
+  const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
   useEffect(() => {
     setActivePath(pathname);
   }, [pathname]);
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isMobileMenuOpen &&
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target as Node)
+      ) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isMobileMenuOpen]);
 
   const handleNavClick = (path: string) => {
     router.push(path);
@@ -39,7 +62,7 @@ const Header = () => {
   return (
     <div>
       {/* Desktop Water Effect Navbar */}
-      <nav className="hidden lg:flex fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-[1400px] rounded-3xl overflow-hidden backdrop-blur-md bg-white/10 border border-white/20 shadow-lg animate-water">
+      <nav className="hidden lg:flex fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-[1400px] rounded-4xl overflow-hidden backdrop-blur-md bg-white/10 border border-white/20 shadow-lg animate-water">
         <div className="flex items-center justify-between w-full px-8 py-3">
           {/* Logo */}
           <button onClick={() => handleNavClick("/")} className="hover:opacity-80 transition-opacity">
@@ -74,7 +97,7 @@ const Header = () => {
               <ChevronDown className="w-4 h-4" />
             </button>
             <User className="w-6 h-6 hover:text-white transition-colors cursor-pointer" />
-            <Library className="w-6 h-6  hover:text-white transition-colors cursor-pointer" />
+            <Library className="w-6 h-6 hover:text-white transition-colors cursor-pointer" />
           </div>
         </div>
 
@@ -94,10 +117,10 @@ const Header = () => {
         `}</style>
       </nav>
 
-      {/* Mobile Header (Transparent) */}
+      {/* Mobile Header */}
       <header className="lg:hidden fixed top-0 left-0 w-full z-50 h-[60px]">
         <div className="flex items-center justify-between px-5 py-3 h-full">
-          {/* Logo on the left */}
+          {/* Logo */}
           <button onClick={() => handleNavClick("/")} className="hover:opacity-80 transition-opacity">
             <img
               className="w-[60px] h-8 object-cover"
@@ -106,8 +129,9 @@ const Header = () => {
             />
           </button>
 
-          {/* Hamburger icon on the right */}
+          {/* Hamburger */}
           <button
+            ref={buttonRef}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="p-2"
           >
@@ -116,11 +140,12 @@ const Header = () => {
         </div>
       </header>
 
-      {/* Add top padding below mobile header for content */}
+      {/* Top padding for content */}
       <div className="lg:hidden h-[30px]" /> {/* 60px header + 20px gap */}
 
       {/* Mobile Slide-Out Menu */}
       <div
+        ref={menuRef}
         className={`lg:hidden fixed top-0 right-0 h-full w-[70%] z-50 transition-transform duration-300 ${
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
@@ -136,7 +161,7 @@ const Header = () => {
           />
 
           {/* Mobile Navigation */}
-          <nav className="flex flex-col gap-4 w-full ">
+          <nav className="flex flex-col gap-4 w-full">
             {navigationItems.map((item, index) => (
               <button
                 key={index}
