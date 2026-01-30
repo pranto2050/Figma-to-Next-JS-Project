@@ -5,7 +5,7 @@ export default function Vanish() {
     <main className="relative min-h-screen bg-[url('/Vanish/vanish%20main%20background.png')] bg-cover bg-center bg-no-repeat">
       {/* Top Part */}
       <div>
-        <div className="pt-6 md:pt-10 text-black">
+        <div className="pt-4 md:pt-10 text-black">
           <Header />
         </div>
         <section className="space-y-3 sm:space-y-4 md:space-y-6 flex flex-col items-center text-center px-4 sm:px-6 md:px-10 lg:px-16 py-8 sm:py-12 md:py-16 lg:pb-20">
