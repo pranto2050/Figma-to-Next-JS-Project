@@ -4,8 +4,8 @@ import { FixedTheBiggestAnnoyance } from "./FixedTheBiggestAnnoyance";
 export const BenefitsSection = () => {
   return (
     // Add it Section for Mobile: md:px-8 md:py-20
-    <section className="relative flex flex-col items-center gap-6 md:gap-7.5 w-full h-auto px-4 sm:px-6 ">
-      <div className="z-2 flex flex-col items-center gap-2 md:gap-1.25 w-full max-w-273">
+    <section className="relative flex flex-col items-center gap-6 md:gap-7.5 w-full h-autosm:px-6 ">
+      <div className="z-2 flex flex-col items-center gap-2 md:gap-1.25 w-full">
         <h2 className="text-center font-['Helvetica_Now_Display-Bold',Helvetica] font-normal text-5xl sm:text-3xl md:text-6xl lg:text-5xl tracking-[0] leading-tight md:leading-[normal] px-2">
           <span className="font-bold text-black">We Fixed the </span>
           <span className="font-['Helvetica_Now_Display-Regular',Helvetica] text-[#d46a00]">
@@ -20,7 +20,7 @@ export const BenefitsSection = () => {
       </div>
 
 
-      <div className="w-full max-w-273 font-['Helvetica_Now_Display-Regular',Helvetica] font-normal text-black text-base sm:text-lg md:text-[20px] lg:text-[22px] text-center tracking-[0] leading-6 md:leading-5.5 px-2">
+      <div className="w-full font-['Helvetica_Now_Display-Regular',Helvetica] font-normal text-black text-base sm:text-lg md:text-[20px] lg:text-[22px] text-center tracking-[0] leading-6 md:leading-5.5 px-2">
         <span className="leading-6">
           Colouring is supposed to help you unwind, but thin paper,
           bleed-through, and messy pages usually ruin the moment. <br className="hidden sm:block" />
@@ -48,11 +48,6 @@ export const BenefitsSection = () => {
           </button>
         </div>
       </div>
-
-
-
-
-      
     </section>
   );
 };

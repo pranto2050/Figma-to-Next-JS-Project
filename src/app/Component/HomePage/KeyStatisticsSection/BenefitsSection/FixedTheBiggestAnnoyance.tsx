@@ -5,16 +5,19 @@ import uspCard2 from "../../../../../../public/USP Card 2.png";
 import uspCard3 from "../../../../../../public/USP Card 3.png";
 import uspCard4 from "../../../../../../public/USP Card 4.png";
 import uspCard5 from "../../../../../../public/USP Card 5.png";
+import bookimg from "../../../../../../public/Img/book-image-section.png";
 
 export const FixedTheBiggestAnnoyance = () => {
   return (
-    <div className="relative w-full mt-8 lg:mt-12 flex justify-center items-center">
-      <div className="relative w-full max-w-[1200px] h-[520px] sm:h-[640px] md:h-[780px] lg:h-[900px] flex items-center justify-center top-50">
+    <div className="relative w-full  lg:mt-12 flex justify-center items-center">
+      <div className="relative w-full  h-[520px] sm:h-[640px] md:h-[780px] lg:h-[900px] flex items-center justify-center top-50 overflow-hidden">
         {/* Center Image */}
-        <img
-          src="/Img/book-image-section.png"
+        <Image
+          src={bookimg}
           alt="Book image section"
-          className="relative z-1 w-[150%] md:w-[90%] sm:w-[100%] lg:top-[-100px] max-w-[1500px]  h-auto object-contain px-4 sm:px-6"
+          width={1400}
+          height={1000}
+          className="relative z-1 h-[1200px] sm:w-[900px] sm:h-[1100px] md:w-[800px] md:h-[1000px] lg:w-[700px] lg:h-[900px] lg:top-[-100px] object-contain px-4 sm:px-6 scale-150"
         />
 
         {/* USP Cards arranged in circle around center image */}
@@ -23,12 +26,16 @@ export const FixedTheBiggestAnnoyance = () => {
         <Image
           src={uspCard1}
           alt="USP Card 1"
+          width={180}
+          height={180}
           className=" md:block top-[350px] left-[100px] absolute z-10 md:top-[80px] md:top-[100px]  md:right-[40px] md:right-[60px] lg:top-[150px] lg:left-[850px] -translate-x-1/2 w-[180px] md:w-[220px]  h-auto"
         />
         {/* Single-sided artwork  lg:w-[280px] */}
         <Image
           src={uspCard2}
           alt="USP Card 2"
+          width={180}
+          height={180}
           className=" md:block absolute left-[170px] top-[200px] md:top-[280px] md:top-[340px] md:right-[50px] md:right-[75px] lg:top-[300px] lg:left-[780px]  w-[180px] md:w-[220px]  h-auto z-10"
         />
 
@@ -36,6 +43,8 @@ export const FixedTheBiggestAnnoyance = () => {
         <Image
           src={uspCard5}
           alt="USP Card 3"
+          width={180}
+          height={180}
           className="hidden md:block absolute bottom-[100px] lg:right-[350px]  lg:bottom-[280px] right-[130px] md:right-[190px] md:bottom-[125px]  w-[180px] md:w-[220px]  h-auto z-10"
         />
 
@@ -43,12 +52,16 @@ export const FixedTheBiggestAnnoyance = () => {
         <Image
           src={uspCard4}
           alt="USP Card 4"
+          width={180}
+          height={180}
           className="hidden md:block absolute bottom-[120px] md:bottom-[160px] md:w-[220px] lg:bottom-[350px] lg:left-[250px] left-[80px] md:left-[115px]  w-[180px] h-auto z-10"
         />
         {/*  Thick 200gsm pages   lg:w-[280px] */}
         <Image
           src={uspCard3}
           alt="USP Card 5"
+          width={180}
+          height={180}
           className=" md:block absolute top-[120px] md:top-[160px] lg:top-[100px] lg:left-[300px] left-[50px] md:left-[75px] w-[180px] md:w-[220px]  h-auto z-10"
         />
       </div>
