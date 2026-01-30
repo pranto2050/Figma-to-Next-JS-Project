@@ -23,6 +23,7 @@ export const KeyStatisticsSection = () => {
     bg-center
     bg-cover
     rounded-t-[100px]
+    overflow-hidden
   "
   style={{
     backgroundImage: "url('/Our%20Mission%20Page/Main%20Background.png')",

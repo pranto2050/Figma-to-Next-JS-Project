@@ -19,9 +19,7 @@ export const FixedTheBiggestAnnoyance = () => {
           height={1000}
           className="relative z-1 h-[1200px] sm:w-[900px] sm:h-[1100px] md:w-[800px] md:h-[1000px] lg:w-[700px] lg:h-[900px] lg:top-[-100px] object-contain px-4 sm:px-6 scale-150"
         />
-
         {/* USP Cards arranged in circle around center image */}
-
         {/* Protective sheet included   lg:w-[280px]*/}
         <Image
           src={uspCard1}
@@ -36,7 +34,7 @@ export const FixedTheBiggestAnnoyance = () => {
           alt="USP Card 2"
           width={180}
           height={180}
-          className=" md:block absolute left-[170px] top-[200px] md:top-[280px] md:top-[340px] md:right-[50px] md:right-[75px] lg:top-[300px] lg:left-[780px]  w-[180px] md:w-[220px]  h-auto z-10"
+          className=" md:block absolute left-[220px] top-[200px] md:top-[280px] md:top-[340px] md:right-[50px] md:right-[75px] lg:top-[300px] lg:left-[820px]  w-[180px] md:w-[220px]  h-auto z-10"
         />
 
         {/* Made for quiet breaks  lg:w-[280px] */}
@@ -45,7 +43,7 @@ export const FixedTheBiggestAnnoyance = () => {
           alt="USP Card 3"
           width={180}
           height={180}
-          className="hidden md:block absolute bottom-[100px] lg:right-[350px]  lg:bottom-[280px] right-[130px] md:right-[190px] md:bottom-[125px]  w-[180px] md:w-[220px]  h-auto z-10"
+          className="hidden md:block absolute bottom-[100px] right-[130px]   md:right-[390px] md:bottom-[125px] lg:right-[410px]  lg:bottom-[280px]  w-[180px] md:w-[220px]  h-auto z-10"
         />
 
         {/* Modern, gender-neutral illustrations  lg:w-[280px]*/}
@@ -54,7 +52,7 @@ export const FixedTheBiggestAnnoyance = () => {
           alt="USP Card 4"
           width={180}
           height={180}
-          className="hidden md:block absolute bottom-[120px] md:bottom-[160px] md:w-[220px] lg:bottom-[350px] lg:left-[250px] left-[80px] md:left-[115px]  w-[180px] h-auto z-10"
+          className="hidden md:block absolute bottom-[120px] left-[80px] md:bottom-[160px] md:w-[220px] lg:bottom-[350px] lg:left-[300px]  md:left-[115px]  w-[180px] h-auto z-10"
         />
         {/*  Thick 200gsm pages   lg:w-[280px] */}
         <Image
@@ -62,7 +60,7 @@ export const FixedTheBiggestAnnoyance = () => {
           alt="USP Card 5"
           width={180}
           height={180}
-          className=" md:block absolute top-[120px] md:top-[160px] lg:top-[100px] lg:left-[300px] left-[50px] md:left-[75px] w-[180px] md:w-[220px]  h-auto z-10"
+          className=" md:block absolute top-[90px] left-[20px] w-[210px] md:top-[160px] md:left-[75px]  md:w-[220px]  lg:top-[100px] lg:left-[300px]   h-auto z-10"
         />
       </div>
     </div>

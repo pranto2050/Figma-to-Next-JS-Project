@@ -50,7 +50,7 @@ const OurMissionPage = () => {
         </section>
       </div>
       {/* Bool Img and Massage */}
-      <div className="relative  flex justify-center items-center w-full  left-5 -top-10 md:-top-40 px-4 z-10 pb-8 sm:pb-12 ">
+      <div className="relative  flex justify-center items-center  -top-10 md:-top-40 px-4 z-10 pb-8 sm:pb-12 ">
         <Image
           src={bookImage}
           alt="Open book illustration"
