@@ -17,7 +17,7 @@ const OurProduct = () => {
           <div className="hidden sm:block w-10 sm:w-15 md:w-auto">
             <Image src={firstArrow} alt="First arrow" className="w-full" />
           </div>
-          <button className="w-35 sm:w-40 md:w-45 text-white h-8.75 sm:h-9.25 md:h-10 hover:outline-[1px] hover:outline-[#ff7f00] bg-[#FF8000] hover:bg-[#FFFFFF]/90 hover:text-[#ff7f00] rounded-[100px] border border-solid border-[#ffe6e0] font-['Helvetica_Now_Display-Medium',Helvetica] font-medium text-sm sm:text-base tracking-[0] leading-5 transition-colors">
+          <button className="w-35 sm:w-40 md:w-45 text-black h-8.75 sm:h-9.25 md:h-10 hover:outline-[1px] hover:outline-[#ff7f00] bg-[#FFEAD8] outline-[1px] outline-[#FF9E3D] hover:bg-[#FF8000]/90 hover:text-black rounded-[100px] border border-solid border-[#ffe6e0] font-['Helvetica_Now_Display-Medium',Helvetica] font-medium text-sm sm:text-base tracking-[0] leading-5 transition-colors">
             Product
           </button>
           <div className="hidden sm:block w-10 sm:w-15 md:w-auto">

@@ -47,7 +47,9 @@ export const ProductDetailModal = ({ product }: ProductDetailModalProps) => {
               className="w-16 h-16 sm:w-20 sm:h-20 md:w-100 md:h-24 object-contain"
             />
           </div>
-          <button className="w-35 sm:w-40 md:w-45 text-black h-8.75 sm:h-9.25 md:h-10 hover:outline-[1px] hover:outline-[#ff7f00] bg-[#FFEAD8] hover:bg-[#FFFFFF]/90 hover:text-[#ff7f00] rounded-[100px] border border-solid border-[#FF8000] font-['Helvetica_Now_Display-Medium',Helvetica] font-medium text-sm sm:text-base tracking-[0] leading-5 transition-colors">
+          <button className="w-35 sm:w-40 md:w-45 text-black h-8.75 sm:h-9.25 md:h-10 hover:outline-[1px] hover:outline-[#ff7f00] bg-[#FFEAD8] hover:bg-[#FFFFFF]/90 hover:text-[#ff7f00] rounded-[100px] border border-solid border-[#FF8000] font-['Helvetica_Now_Display-Medium',Helvetica] font-medium text-sm sm:text-base tracking-[0] leading-5 transition-colors"
+            onClick={() => router.push("/products")}
+          >
             Product
           </button>
           {/* Divider Arrow between Product and Back buttons */}
@@ -64,7 +66,7 @@ export const ProductDetailModal = ({ product }: ProductDetailModalProps) => {
           </span>
           {/* Back to Products Button (moved to top bar) */}
           <button
-            onClick={() => router.push("/")}
+            onClick={() => router.push("/products")}
             className="w-auto px-4 sm:px-5 md:px-6 h-8.75 sm:h-9.25 md:h-10 flex items-center gap-2 text-sm sm:text-base font-medium rounded-[100px] border border-solid border-transparent text-white hover:text-[#ffe6e0] transition-colors"
             style={{ fontFamily: "Helvetica Now Display, Helvetica" }}
           >
