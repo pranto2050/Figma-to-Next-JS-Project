@@ -8,7 +8,8 @@ import Header from "../../Component/HeaderSection/Header";
 import firstArrow from "../../../../public/Our Mission Page/Frame 1.png";
 import secoundArrow from "../../../../public/Our Mission Page/Frame 2.png";
 import sendIcon from "../../../../public/Product/send-02.png";
-import { KeyStatisticsSection as FrequentlyAskedQuestions } from "../frequentlyAskedQuestions/frequentlyAskedQuestions"
+import { KeyStatisticsSection as FrequentlyAskedQuestions } from "../frequentlyAskedQuestions/frequentlyAskedQuestions";
+import productIcon from "../../../../public/Icon/report-search.svg";
 
 interface Product {
   images: any[];
@@ -47,10 +48,16 @@ export const ProductDetailModal = ({ product }: ProductDetailModalProps) => {
               className="w-16 h-16 sm:w-20 sm:h-20 md:w-100 md:h-24 object-contain"
             />
           </div>
-          <button className="w-35 sm:w-40 md:w-45 text-black h-8.75 sm:h-9.25 md:h-10 hover:outline-[1px] hover:outline-[#ff7f00] bg-[#FFEAD8] hover:bg-[#FFFFFF]/90 hover:text-[#ff7f00] rounded-[100px] border border-solid border-[#FF8000] font-['Helvetica_Now_Display-Medium',Helvetica] font-medium text-sm sm:text-base tracking-[0] leading-5 transition-colors"
+          <button
+            className="w-35 sm:w-40 md:w-45 text-black h-8.75 sm:h-9.25 md:h-10 hover:outline-[1px] hover:outline-[#ff7f00] bg-[#FFEAD8] hover:bg-[#FFFFFF]/90 hover:text-[#ff7f00] rounded-[100px] border border-solid border-[#FF8000] font-['Helvetica_Now_Display-Medium',Helvetica] font-medium text-sm sm:text-base tracking-[0] leading-5 transition-colors flex items-center justify-center gap-2"
             onClick={() => router.push("/products")}
           >
-            Product
+            <span>Product</span>
+            <img
+              src={productIcon.src}
+              alt="Product Icon"
+              className="w-4 h-4 sm:w-5 sm:h-5"
+            />
           </button>
           {/* Divider Arrow between Product and Back buttons */}
           <span className="flex items-center justify-center">
@@ -298,8 +305,8 @@ export const ProductDetailModal = ({ product }: ProductDetailModalProps) => {
 
           {/* FAQ Section */}
           <div className="flex justify-center">
-                  <FrequentlyAskedQuestions />
-                  </div>
+            <FrequentlyAskedQuestions />
+          </div>
         </div>
       </section>
     </main>
