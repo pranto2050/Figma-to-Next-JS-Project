@@ -1,45 +1,47 @@
 "use client";
 
-import {
-  ChevronDown,
-  User,
-  Library,
-  Menu,
-  X,
-  Home,
-  Target,
-  Package,
-  FileText,
-  Eye,
-  Mail,
-} from "lucide-react";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import homeIcon from "../../../../public/Icon/home.svg";
+import missionIcon from "../../../../public/Icon/rocket.svg";
+import productIcon from "../../../../public/Icon/Vector.svg";
+import blogIcon from "../../../../public/Icon/write.svg";
+import vanishIcon from "../../../../public/Icon/gitlab.svg";
+import contactIcon from "../../../../public/Icon/phone-call.svg";
+
+import { ChevronDown, User, Library, Menu, X } from "lucide-react";
+import { useState, useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
 
 const navigationItems = [
-  { label: "Home", icon: Home, path: "/" },
-  { label: "Our Mission", icon: Target, path: "/our-mission" },
-  { label: "Products", icon: Package, path: "/products" },
-  { label: "Blog", icon: FileText, path: "/blog" },
-  { label: "Vanish", icon: Eye, path: "/vanish" },
-  { label: "Contact Us", icon: Mail, path: "/contact" },
+  { label: "Home", icon: homeIcon, path: "/" },
+  { label: "Our Mission", icon: missionIcon, path: "/our-mission" },
+  { label: "Products", icon: productIcon, path: "/products" },
+  { label: "Blog", icon: blogIcon, path: "/blog" },
+  { label: "Vanish", icon: vanishIcon, path: "/vanish" },
+  { label: "Contact Us", icon: contactIcon, path: "/contact" },
 ];
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname(); // current page path
+  const [activePath, setActivePath] = useState(pathname); // initialize with current page
   const router = useRouter();
+
+  // Update activePath when route changes (important for client-side navigation)
+  useEffect(() => {
+    setActivePath(pathname);
+  }, [pathname]);
 
   const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
 
   const handleNavClick = (path: string) => {
     router.push(path);
+    setActivePath(path); // Set active button immediately
     setIsMobileMenuOpen(false);
   };
 
   return (
     <div>
       <header className="relative w-full px-4 md:px-[65px] py-2">
-        {/* ================= HEADER (UNCHANGED) ================= */}
         <div className="relative w-full bg-[#00000000] md:rounded-[100px] md:overflow-visible md:backdrop-blur-[0.2px] md:backdrop-brightness-[110%] md:shadow-[inset_0_1px_0_rgba(255,255,255,0.40),inset_1px_0_0_rgba(255,255,255,0.32),inset_0_-1px_1px_rgba(0,0,0,0.13),inset_-1px_0_1px_rgba(0,0,0,0.11)] z-30">
           <div className="relative w-full min-h-[88px] bg-[#ffffff03] rounded-[100px]">
             <div className="flex items-center justify-between h-full px-4 md:px-[65px] py-4">
@@ -57,17 +59,22 @@ const Header = () => {
 
               {/* Desktop Navigation */}
               <nav className="hidden lg:flex items-center gap-0.5">
-                {navigationItems.map((item, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleNavClick(item.path)}
-                    className="px-4 py-2 rounded-lg hover:bg-black/5 transition-colors"
-                  >
-                    <span className="[font-family:'Salsa',Helvetica] font-normal text-lg">
-                      {item.label}
-                    </span>
-                  </button>
-                ))}
+                {navigationItems.map((item, index) => {
+                  const isActive = activePath === item.path;
+                  return (
+                    <button
+                      key={index}
+                      onClick={() => handleNavClick(item.path)}
+                      className={`px-4 py-2 rounded-lg transition-colors
+                        ${isActive ? "bg-[#FF8000] text-white" : "hover:bg-black/5 text-black"}
+                      `}
+                    >
+                      <span className="[font-family:'Salsa',Helvetica] font-normal text-lg">
+                        {item.label}
+                      </span>
+                    </button>
+                  );
+                })}
               </nav>
 
               {/* Desktop Right Section */}
@@ -101,67 +108,56 @@ const Header = () => {
           </div>
         </div>
 
+        {/* Mobile Overlay */}
+        {isMobileMenuOpen && (
+          <div
+            className="lg:hidden fixed inset-0 bg-black/20 backdrop-blur-sm z-40"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+        )}
 
-        {/* Mobile Menu Start */}
+        {/* Mobile Menu */}
+        <div
+          className={`lg:hidden fixed top-0 right-0 h-full w-[70%] z-50 transition-transform duration-300 ${
+            isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-[#ffe6c9]/80 via-[#f7d6d6]/80 to-[#d9efe7]/80 backdrop-blur-md" />
 
-      
+          <div className="relative h-full flex flex-col items-end px-6 pt-20">
+            {/* Logo */}
+            <img
+              src="/Img/whatsapp-image-2025-11-15-at-21-02-1.png"
+              alt="Logo"
+              className="w-[100px] mb-14"
+            />
 
-
-{/* ================= MOBILE OVERLAY (20%) ================= */}
-{isMobileMenuOpen && (
-  <div
-    className="lg:hidden fixed inset-0 bg-black/20 backdrop-blur-sm z-40"
-    onClick={() => setIsMobileMenuOpen(false)}
-  />
-)}
-
-{/* ================= MOBILE MENU (80%) ================= */}
-<div
-  className={`lg:hidden fixed top-0 right-0 h-full w-[70%] z-50 transition-transform duration-300 ${
-    isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-  }`}
->
-  {/* Background Gradient */}
-  <div className="absolute inset-0 bg-gradient-to-br from-[#ffe6c9]/80 via-[#f7d6d6]/80 to-[#d9efe7]/80 backdrop-blur-md" />
-
-  {/* Content */}
-  <div className="relative h-full flex flex-col items-end px-6 pt-20">
-    {/* Logo */}
-    <img
-      src="/Img/whatsapp-image-2025-11-15-at-21-02-1.png"
-      alt="Logo"
-      className="w-[140px] mb-14"
-    />
-
-    {/* Navigation */}
-    <nav className="flex flex-col gap-6 w-full max-w-[260px]">
-      {navigationItems.map((item, index) => {
-        const Icon = item.icon;
-        return (
-          <button
-            key={index}
-            onClick={() => handleNavClick(item.path)}
-            className="flex items-center justify-end w-full px-6 py-4 rounded-full text-black hover:bg-black/5 transition-colors"
-          >
-            {/* Text aligned RIGHT */}
-            <span className="[font-family:'Salsa',Helvetica] text-lg text-right">
-              {item.label}
-            </span>
-
-            {/* Icon with 20px gap */}
-            <Icon className="w-5 h-5 ml-[20px]" />
-          </button>
-        );
-      })}
-    </nav>
-  </div>
-</div>
-
-
-
-
-
-        {/* Mobile Menu End */}
+            {/* Mobile Navigation */}
+            <nav className="flex flex-col gap-4 w-full max-w-[260px]">
+              {navigationItems.map((item, index) => {
+                const isActive = activePath === item.path;
+                return (
+                  <button
+                    key={index}
+                    onClick={() => handleNavClick(item.path)}
+                    className={`flex items-center justify-end w-full px-6 py-4 rounded-full transition-colors
+                      ${isActive ? "bg-[#FF8000] text-white" : "text-black hover:bg-black/5"}
+                    `}
+                  >
+                    <span className="[font-family:'Salsa',Helvetica] text-lg text-right">
+                      {item.label}
+                    </span>
+                    <img
+                      src={item.icon.src}
+                      alt={item.label}
+                      className="w-5 h-5 ml-[20px]"
+                    />
+                  </button>
+                );
+              })}
+            </nav>
+          </div>
+        </div>
       </header>
     </div>
   );
