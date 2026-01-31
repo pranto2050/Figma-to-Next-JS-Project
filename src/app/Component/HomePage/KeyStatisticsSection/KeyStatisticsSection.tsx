@@ -45,7 +45,7 @@ export const KeyStatisticsSection = () => {
             </button>
         </div>
 
-        <div className="flex items-center flex-col w-full md:items-start gap-4 md:gap-5">
+        <div className="flex lg:mt-30 items-center flex-col w-full md:items-start gap-4 md:gap-5">
         <div>
         <h2 className="relative self-stretch font-['Helvetica_Now_Display-Bold',Helvetica] font-normal text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-[0] leading-tight md:leading-[normal]">
           <span className="font-bold text-black">Almost </span>
@@ -76,8 +76,8 @@ export const KeyStatisticsSection = () => {
         break your brain deserves.
       </p>
 
-      <div className="flex lg:mt-20 justify-center">
-            <button className="w-full md:w-52.5 h-10 md:h-11.25 bg-[#ff7f00] hover:bg-[#ff7f00]/90 rounded-[100px] border border-solid border-[#ffe6e0] font-['Helvetica_Now_Display-Medium',Helvetica] font-medium text-white text-base tracking-[0] leading-5 transition-colors">
+      <div className="flex lg:mt-20 mt-10 w-50 justify-center">
+            <button className="w-full  md:w-52.5 h-10 md:h-11.25 bg-[#ff7f00] hover:bg-[#ff7f00]/90 rounded-[100px] border border-solid border-[#ffe6e0] font-['Helvetica_Now_Display-Medium',Helvetica] font-medium text-white text-base tracking-[0] leading-5 transition-colors">
             Explore the Collection
             </button>
           </div>
@@ -90,7 +90,7 @@ export const KeyStatisticsSection = () => {
     <div className="flex flex-col w-full max-w-full sm:max-w-[90%] md:max-w-[85%] lg:max-w-[533px] items-center sm:items-center md:items-center lg:items-end gap-0 relative mt-4 sm:mt-4 md:mt-6 lg:mt-0 px-2 sm:px-4 md:px-6 lg:px-0">
       <div className="relative w-full min-h-0 lg:-top-12">
         <img
-          className="relative w-full h-auto max-w-full max-w-[50%] md:max-w-[85%] lg:max-w-[533px] object-cover rounded-lg sm:rounded-xl md:rounded-xl"
+          className="relative lg:-top-40 w-full h-auto max-w-full max-w-[50%] md:max-w-[85%] lg:max-w-[533px] object-cover rounded-lg sm:rounded-xl md:rounded-xl"
           src={bedImg.src}
           alt="Calm, restful space"
         />
@@ -103,7 +103,7 @@ export const KeyStatisticsSection = () => {
           </div>
           
 
-          <div className="mt-8 md:mt-30">
+          <div className="mt-10 md:mt-0">
             <ProductShowcaseSection/>
           </div>
 

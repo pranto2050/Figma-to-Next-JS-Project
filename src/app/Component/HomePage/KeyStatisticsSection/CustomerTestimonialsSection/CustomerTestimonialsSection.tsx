@@ -36,7 +36,7 @@ const avatarImages = [
 
 export const CustomerTestimonialsSection = () => {
   return (
-    <section className="relative flex flex-col bg-[#FFEAD8] px-10 lg:px-20 pt-10 gap-10 pb-20">
+    <section className="relative flex flex-col bg-[#FFEAD8] lg:px-20 pt-10 gap-10 pb-20">
       <div className="flex">
         <button className="flex items-center justify-center gap-2 w-[180px] md:w-[180px] h-[40px] md:h-[35px] outline-[1px] outline-[#ff7f00] bg-[#FFEAD8] hover:bg-[#ff7f00]/90 text-black rounded-[100px] border border-solid border-[#ffe6e0] font-['Helvetica_Now_Display-Medium',Helvetica] font-medium text-base tracking-[0] leading-5 transition-colors">
           What people says
