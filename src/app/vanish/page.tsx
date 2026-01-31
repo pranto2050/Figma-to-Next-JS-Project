@@ -21,7 +21,14 @@ export default function Vanish() {
       {/* message composer */}
       <section className="px-3 sm:px-4 md:px-8 lg:px-16 pb-10 sm:pb-14 md:pb-16 flex justify-center">
         <div className="w-full max-w-5xl">
-          <div className="relative overflow-hidden rounded-2xl sm:rounded-[32px] border border-orange-200/60 bg-white/50 backdrop-blur-sm shadow-[0_18px_60px_rgba(0,0,0,0.25)] p-4 sm:p-6 md:p-10">
+          <div className="relative 
+          overflow-hidden 
+          rounded-2xl 
+          m:rounded-[32px] 
+          border 
+          border-orange-200/60 
+          bg-white/50 backdrop-blur-sm shadow-[0_18px_60px_rgba(0,0,0,0.25)] 
+          p-4 sm:p-6 md:p-10">
             <textarea
               className="w-full resize-none bg-transparent text-sm sm:text-base md:text-lg text-gray-700 placeholder:text-gray-400 outline-none"
               rows={5}

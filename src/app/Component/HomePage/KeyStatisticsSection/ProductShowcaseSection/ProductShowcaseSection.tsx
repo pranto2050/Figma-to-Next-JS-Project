@@ -2,8 +2,10 @@
 
 import { CheckCircle2Icon, SendIcon, Plus, Minus } from "lucide-react";
 import React from "react";
+import { useRouter } from "next/navigation";
 import { Card, CardContent } from "../../../../../components/ui/card";
 import { Button } from "../../../../../components/ui/button";
+import { useCart } from "../../../../context/CartContext";
 // import Image from "../../../../../../public/Card Background.png";
 import cartBackgroundImg from "../../../../../../public/productSection.png";
 
@@ -20,13 +22,15 @@ const productImage = "/Img/image.png";
 const sliderItems = 4; // Number of slides
 
 export const ProductShowcaseSection = () => {
-  const [quantity, setQuantity] = React.useState(0);
+  const router = useRouter();
+  const { addItem } = useCart();
+  const [quantity, setQuantity] = React.useState(1);
   const [currentSlide, setCurrentSlide] = React.useState(0);
   const [touchStart, setTouchStart] = React.useState(0);
   const [touchEnd, setTouchEnd] = React.useState(0);
 
   const handleIncrease = () => setQuantity(quantity + 1);
-  const handleDecrease = () => setQuantity(quantity > 0 ? quantity - 1 : 0);
+  const handleDecrease = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % sliderItems);
@@ -136,7 +140,14 @@ export const ProductShowcaseSection = () => {
                   </div>
                 </div>
 
-                <Button className="flex justify-center items-center w-[160px] sm:w-[180px] md:w-full h-[35px] sm:h-[30px] bg-[#ff7f00] hover:bg-[#ff7f00]/90 text-white rounded-[20px] border border-[#ffe6e0] gap-2 [font-family:'Helvetica_Now_Display-Medium',Helvetica] font-medium text-xs sm:text-xs">
+                <Button
+                  type="button"
+                  onClick={() => {
+                    addItem(0, quantity);
+                    router.push("/checkout");
+                  }}
+                  className="flex justify-center items-center w-[160px] sm:w-[180px] md:w-full h-[35px] sm:h-[30px] bg-[#ff7f00] hover:bg-[#ff7f00]/90 text-white rounded-[20px] border border-[#ffe6e0] gap-2 [font-family:'Helvetica_Now_Display-Medium',Helvetica] font-medium text-xs sm:text-xs"
+                >
                   <SendIcon className="w-4 h-4" />
                   Buy Now
                 </Button>

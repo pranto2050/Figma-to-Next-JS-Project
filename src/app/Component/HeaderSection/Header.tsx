@@ -149,10 +149,12 @@ const Header = () => {
             >
               <User className="w-5 h-5 min-[1100px]:w-6 min-[1100px]:h-6 hover:text-white transition-colors cursor-pointer" />
             </button>
+            {/* Checkout button */}
             <button
               type="button"
+              onClick={() => handleNavClick("/checkout")}
               className="p-1 rounded-lg hover:bg-white/10 transition-colors"
-              aria-label="Library"
+              aria-label="Checkout"
             >
               <LibraryIcon className="w-5 h-5 min-[1100px]:w-6 min-[1100px]:h-6 hover:text-white transition-colors cursor-pointer" />
             </button>

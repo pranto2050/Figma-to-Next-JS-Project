@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useCart } from "../../context/CartContext";
 import Image from "next/image";
 import productCart1 from "../../../../public/Product/procuct 1.png";
 import productCart2 from "../../../../public/Product/procuct 2.png";
@@ -11,6 +12,7 @@ import { KeyStatisticsSection as FrequentlyAskedQuestions } from "../frequentlyA
 
 export const KeyStatisticsSection = () => {
   const router = useRouter();
+  const { addItem } = useCart();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [slideIndex, setSlideIndex] = useState<{ [key: number]: number }>({
     0: 0,
@@ -176,6 +178,11 @@ export const KeyStatisticsSection = () => {
                       ${product.price}
                     </span>
                     <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        addItem(index, 1);
+                        router.push("/checkout");
+                      }}
                       className="bg-[#FF8000] text-white px-3 sm:px-3 md:px-4 py-1.5 sm:py-1.5 md:py-2 text-sm sm:text-sm md:text-base rounded-full hover:bg-[#FF8000]/90 transition-colors font-medium"
                       style={{ fontFamily: "Helvetica Now Display, Helvetica" }}
                     >

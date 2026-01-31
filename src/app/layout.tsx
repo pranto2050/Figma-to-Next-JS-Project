@@ -3,6 +3,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { useEffect } from "react";
+import { CartProvider } from "./context/CartContext";
 
 // export const metadata: Metadata = {
 //   title: "Create Next App",
@@ -37,9 +38,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body suppressHydrationWarning>
-        <div className="max-w-[1440px] mx-auto w-full min-h-screen">
-          {children}
-        </div>
+        <CartProvider>
+          <div className="max-w-[1440px] mx-auto w-full min-h-screen">
+            {children}
+          </div>
+        </CartProvider>
       </body>
     </html>
   );

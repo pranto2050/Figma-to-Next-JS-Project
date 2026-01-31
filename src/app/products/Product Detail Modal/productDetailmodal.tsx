@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useCart } from "../../context/CartContext";
 
 import Header from "../../Component/HeaderSection/Header";
 import firstArrow from "../../../../public/Our Mission Page/Frame 1.png";
@@ -22,10 +23,12 @@ interface Product {
 
 interface ProductDetailModalProps {
   product: Product;
+  productId?: number;
 }
 
-export const ProductDetailModal = ({ product }: ProductDetailModalProps) => {
+export const ProductDetailModal = ({ product, productId = 0 }: ProductDetailModalProps) => {
   const router = useRouter();
+  const { addItem } = useCart();
   const [selectedImage, setSelectedImage] = useState<number>(0);
   const [quantity, setQuantity] = useState<number>(1);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -288,6 +291,11 @@ export const ProductDetailModal = ({ product }: ProductDetailModalProps) => {
                   </div>
 
                   <button
+                    type="button"
+                    onClick={() => {
+                      addItem(productId, quantity);
+                      router.push("/checkout");
+                    }}
                     className="w-full bg-[#FF8000] lg:w-full lg:py-1 text-white py-2 sm:py-5 rounded-full text-lg sm:text-xl md:text-[15px] font-bold hover:bg-[#FF8000]/90 transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-3"
                     style={{ fontFamily: "Helvetica Now Display, Helvetica" }}
                   >

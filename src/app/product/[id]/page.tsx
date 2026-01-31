@@ -104,6 +104,6 @@ export default function ProductDetailPage() {
     );
   }
 
-  return <ProductDetailModal product={product} />;
+  return <ProductDetailModal product={product} productId={productId} />;
   
 }
