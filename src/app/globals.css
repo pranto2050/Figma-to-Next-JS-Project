@@ -3,6 +3,10 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* Admin panel palette */
+  --admin-primary: #FF8000;
+  --admin-light: #FFEAD8;
+  --admin-dark: #000000;
 }
 
 @theme inline {

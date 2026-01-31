@@ -4,7 +4,7 @@ import { CheckCircle2Icon, SendIcon, Plus, Minus } from "lucide-react";
 import React from "react";
 import { Card, CardContent } from "../../../../../components/ui/card";
 import { Button } from "../../../../../components/ui/button";
-import Image from "../../../../../../public/Card Background.png";
+// import Image from "../../../../../../public/Card Background.png";
 import cartBackgroundImg from "../../../../../../public/productSection.png";
 
 const features = [
@@ -64,7 +64,7 @@ export const ProductShowcaseSection = () => {
   return (
     <section
       className="w-full relative bg-cover bg-center"
-      style={{ backgroundImage: `url(${Image.src})` }}
+      
     >
       <Card
         className="flex flex-col justify-center rounded-[20px] shadow-[0px_4px_4px_#00000040] border-0 overflow-hidden md:mx-30"
