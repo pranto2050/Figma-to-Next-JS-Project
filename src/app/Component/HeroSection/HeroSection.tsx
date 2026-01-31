@@ -23,31 +23,31 @@ export const HeroSection = () => {
       {/* Add figger Section Start */}
       <div className="absolute inset-0 pointer-events-none z-1 h-full overflow-hidden">
         {/* Figger 1 – top left */}
-        <div className="absolute md:-top-10 left-0">
+        <div className="absolute top-0 left-0 md:-top-10">
           <Image
             src={figger1}
             alt="Figger 1"
             width={922}
             height={259}
-            className="w-full max-w-[622px] object-contain object-left opacity-30"
+            className="h-auto w-full max-w-[75vw] object-contain object-left opacity-30 w-[722px] md:max-w-[622px]"
             priority
           />
         </div>
         {/* Figger 2 – bottom right */}
-        <div className="absolute md:top-130 md:bottom-0 md:-right-40">
+        <div className="absolute bottom-0 right-0 top-160 md:top-130 md:bottom-0 md:-right-40">
           <Image
             src={figger2}
             alt="Figger 2"
             width={658}
             height={582}
-            className="w-full max-w-[722px] object-contain object-right opacity-30"
+            className="h-auto w-full max-w-[70vw] object-contain object-right opacity-30 w-[822px] md:max-w-[722px]"
             priority
           />
         </div>
       </div>
     {/* Figger Section End */}
     {/* Hero Image Section */}
-      <div className="">
+      <div className=" z-20">
         <HeroImageSection />
       </div>
       <div className="absolute top-10 left-0 w-full z-20">
