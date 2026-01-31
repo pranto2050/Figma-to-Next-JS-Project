@@ -78,28 +78,34 @@ const Header = () => {
 
   return (
     <div>
-      {/* Desktop Water Effect Navbar */}
-      <nav className="hidden lg:flex fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-[1153px] rounded-4xl overflow-hidden backdrop-blur-md bg-white/10 border border-white/20 shadow-lg animate-water">
-        <div className="flex items-center justify-between w-full px-8 py-3">
-          {/* Logo */}
-          <button onClick={() => handleNavClick("/")} className="hover:opacity-80 transition-opacity">
+      {/* Desktop Water Effect Navbar - at 1015px viewport width = 1000px (98.52%); max 1153px */}
+      <nav
+        className="hidden min-[1000px]:flex fixed top-5 left-1/2 -translate-x-1/2 z-50 rounded-3xl min-[1200px]:rounded-4xl overflow-hidden backdrop-blur-md bg-white/10 border border-white/20 shadow-lg animate-water"
+        style={{ width: "min(98.52%, 1153px)" }}
+      >
+        <div className="flex items-center justify-between w-full min-w-0 px-4 py-2.5 min-[1100px]:px-6 min-[1200px]:px-8 min-[1200px]:py-3 gap-2 min-[1200px]:gap-4">
+          {/* Logo - scales with viewport */}
+          <button
+            onClick={() => handleNavClick("/")}
+            className="hover:opacity-80 transition-opacity flex-shrink-0"
+          >
             <img
-              className="w-[70px] h-10 object-cover"
+              className="w-12 h-8 min-[1100px]:w-14 min-[1100px]:h-9 min-[1200px]:w-[70px] min-[1200px]:h-10 object-cover transition-all duration-200"
               src="/Img/whatsapp-image-2025-11-15-at-21-02-1.png"
               alt="Logo"
             />
           </button>
 
-          {/* Navigation */}
-          <div className="flex items-center gap-4">
+          {/* Navigation - compact then spacious */}
+          <div className="flex items-center justify-center min-w-0 flex-1 gap-1.5 min-[1100px]:gap-2.5 min-[1200px]:gap-4 flex-nowrap">
             {navigationItems.map((item, index) => (
               <button
                 key={index}
                 onClick={() => handleNavClick(item.path)}
-                className={`px-4 py-2 rounded-lg transition-colors font-medium text-lg ${
+                className={`flex-shrink-0 px-2 py-1.5 min-[1100px]:px-3 min-[1100px]:py-2 min-[1200px]:px-4 rounded-lg transition-all duration-200 font-medium text-sm min-[1100px]:text-base min-[1200px]:text-lg whitespace-nowrap ${
                   activePath === item.path
                     ? "text-[#FF8000]"
-                    : " hover:text-white hover:bg-white/10"
+                    : "hover:text-white hover:bg-white/10"
                 }`}
               >
                 {item.label}
@@ -107,14 +113,14 @@ const Header = () => {
             ))}
           </div>
 
-          {/* Right Section */}
-          <div className="flex items-center gap-4">
-            <button className="flex items-center gap-1 px-3 py-1 rounded-lg hover:bg-white/10 transition-colors">
+          {/* Right Section - icons scale with viewport */}
+          <div className="flex items-center flex-shrink-0 gap-2 min-[1100px]:gap-3 min-[1200px]:gap-4">
+            <button className="flex items-center gap-0.5 min-[1100px]:gap-1 px-2 min-[1100px]:px-3 py-1 rounded-lg hover:bg-white/10 transition-colors text-sm min-[1100px]:text-base">
               Eng
-              <ChevronDown className="w-4 h-4" />
+              <ChevronDown className="w-3.5 h-3.5 min-[1100px]:w-4 min-[1100px]:h-4" />
             </button>
-            <User className="w-6 h-6 hover:text-white transition-colors cursor-pointer" />
-            <Library className="w-6 h-6 hover:text-white transition-colors cursor-pointer" />
+            <User className="w-5 h-5 min-[1100px]:w-6 min-[1100px]:h-6 hover:text-white transition-colors cursor-pointer" />
+            <Library className="w-5 h-5 min-[1100px]:w-6 min-[1100px]:h-6 hover:text-white transition-colors cursor-pointer" />
           </div>
         </div>
 
@@ -134,8 +140,8 @@ const Header = () => {
         `}</style>
       </nav>
 
-      {/* Mobile Header */}
-      <header className="lg:hidden fixed top-0 left-0 w-full z-50 h-[60px]">
+      {/* Mobile Header - visible when width &lt; 1000px (hamburger) */}
+      <header className="min-[1000px]:hidden fixed top-0 left-0 w-full z-50 h-[60px]">
         <div className="flex items-center justify-between px-5 py-3 h-full">
           {/* Logo */}
           <button onClick={() => handleNavClick("/")} className="hover:opacity-80 transition-opacity">
@@ -158,12 +164,12 @@ const Header = () => {
       </header>
 
       {/* Top padding for content */}
-      <div className="lg:hidden h-[30px]" /> {/* 60px header + 20px gap */}
+      <div className="min-[1000px]:hidden h-[30px]" /> {/* 60px header + 20px gap */}
 
       {/* Mobile Slide-Out Menu */}
       <div
         ref={menuRef}
-        className={`lg:hidden fixed top-0 right-0 h-full w-[70%] z-50 transition-transform duration-300 ${
+        className={`min-[1000px]:hidden fixed top-0 right-0 h-full w-[70%] z-50 transition-transform duration-300 ${
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -191,7 +197,7 @@ const Header = () => {
                 <img
                   src={item.icon.src}
                   alt={item.label}
-                  className={`w-5 h-5 lg:hidden ml-[30px] ${
+                  className={`w-5 h-5 min-[1000px]:hidden ml-[30px] ${
                     activePath === item.path ? "filter brightness-0 invert" : ""
                   }`}
                 />

@@ -2,68 +2,95 @@
 
 import React from "react";
 
-const images = [
+/** Size/position config per breakpoint */
+type LayoutSize = {
+  top: number;
+  left: number;
+  width: number;
+  height: number;
+  rotation: number;
+};
+
+type MobileSize = {
+  width: number;
+  height: number;
+  rotation: number;
+};
+
+type HeroImage = {
+  src: string;
+  alt: string;
+  zIndex: number;
+  /** Mobile: stacked centered cards (small screens) */
+  mobile: MobileSize;
+  /** Tablet: md breakpoint (768px–1023px) */
+  tablet: LayoutSize;
+  /** Desktop: lg breakpoint (1024px+) */
+  desktop: LayoutSize;
+};
+
+const images: HeroImage[] = [
   {
     src: "/Img/rectangle-8.png",
     alt: "Rectangle",
-    className: "top-6 left-[-71px] w-[245px] h-[246px]",
     zIndex: 1,
-    rotation: -10.55,
-    mobileRotation: -10, // Individual mobile rotation for this image
+    mobile: { width: 200, height: 200, rotation: -10 },
+    tablet: { top: 24, left: -71, width: 245, height: 246, rotation: -10.55 },
+    desktop: { top: 28, left: -82, width: 282, height: 283, rotation: -10.55 },
   },
   {
     src: "/Img/rectangle-7.png",
     alt: "Rectangle",
-    className: "top-[25px] left-[102px] w-[245px] h-[246px]",
     zIndex: 2,
-    rotation: -10,
-    mobileRotation: -5, // Individual mobile rotation for this image
+    mobile: { width: 200, height: 200, rotation: -5 },
+    tablet: { top: 25, left: 102, width: 245, height: 246, rotation: -10 },
+    desktop: { top: 29, left: 117, width: 282, height: 283, rotation: -10 },
   },
   {
     src: "/Img/rectangle-6.png",
     alt: "Rectangle",
-    className: "top-[40px] left-[266px] w-[230px] h-[230px]",
     zIndex: 3,
-    rotation: -10,
-    mobileRotation: 0, // Individual mobile rotation for this image
+    mobile: { width: 200, height: 200, rotation: 0 },
+    tablet: { top: 40, left: 266, width: 230, height: 230, rotation: -10 },
+    desktop: { top: 46, left: 306, width: 265, height: 265, rotation: -10 },
   },
   {
     src: "/Img/rectangle-5.png",
     alt: "Rectangle",
-    className: "top-[3px] left-[415px] w-[245px] h-[246px]",
     zIndex: 4,
-    rotation: 0,
-    mobileRotation: 5, // Individual mobile rotation for this image
+    mobile: { width: 200, height: 200, rotation: 5 },
+    tablet: { top: 3, left: 415, width: 245, height: 246, rotation: 0 },
+    desktop: { top: 3, left: 477, width: 282, height: 283, rotation: 0 },
   },
   {
     src: "/Img/rectangle-4.png",
     alt: "Rectangle",
-    className: "-top-1 left-[546px] w-[245px] h-[246px]",
     zIndex: 3,
-    rotation: 10,
-    mobileRotation: 10, // Individual mobile rotation for this image
+    mobile: { width: 200, height: 200, rotation: 10 },
+    tablet: { top: -4, left: 546, width: 245, height: 246, rotation: 10 },
+    desktop: { top: -5, left: 628, width: 282, height: 283, rotation: 10 },
   },
   {
     src: "/Img/rectangle-3.png",
     alt: "Rectangle",
-    className: "top-1.5 left-[706px] w-[245px] h-[246px]",
     zIndex: 2,
-    rotation: 10,
-    mobileRotation: -8, // Individual mobile rotation for this image
+    mobile: { width: 200, height: 200, rotation: -8 },
+    tablet: { top: 6, left: 706, width: 245, height: 246, rotation: 10 },
+    desktop: { top: 7, left: 812, width: 282, height: 283, rotation: 10 },
   },
   {
     src: "/Img/rectangle-2.png",
     alt: "Rectangle",
-    className: "-top-px left-[867px] w-[245.28px] h-[246.09px]",
     zIndex: 1,
-    rotation: 10.55,
-    mobileRotation: 12, // Individual mobile rotation for this image
+    mobile: { width: 200, height: 200, rotation: 12 },
+    tablet: { top: -1, left: 867, width: 245, height: 246, rotation: 10.55 },
+    desktop: { top: -1, left: 997, width: 282, height: 283, rotation: 10.55 },
   },
 ];
 
 export const HeroImageSection = () => {
   return (
-    <section className="flex flex-col w-full max-w-[1196px] rounded-[30px] pt-8 sm:pt-12 md:pt-16 lg:pt-20 items-center gap-6 sm:gap-8 md:gap-[30px] mx-auto px-4 md:px-10">
+    <section className="flex flex-col w-full max-w-[1196px] rounded-[30px] pt-8 sm:pt-12 md:pt-16 lg:pt-20 items-center gap-6 sm:gap-8 md:gap-[30px] mx-auto px-4 md:px-10 overflow-visible">
       <header className="flex flex-col items-center justify-center w-full mt-[-1.00px]">
         <h1 className="font-['Helvetica_Now_Display-Bold',Helvetica] font-bold text-black text-[28px] sm:text-[32px] md:text-[42px] lg:text-[50px] text-center tracking-[0] leading-[38px] sm:leading-[45px] md:leading-[60px] lg:leading-[70px]">
           Life Feels Better Offline
@@ -74,18 +101,21 @@ export const HeroImageSection = () => {
         </p>
       </header>
 
-      {/* Mobile: All Images Stacked on Top of Each Other (Perfectly Centered) */}
+      {/* Mobile: stacked centered – uses image.mobile */}
       <div className="md:hidden relative w-full flex items-center justify-center h-[280px] sm:h-[300px] my-6">
         {images.map((image, index) => {
           const isTopImage =
             image.zIndex === Math.max(...images.map((img) => img.zIndex));
+          const m = image.mobile;
           return (
             <img
               key={index}
-              className="absolute w-[200px] sm:w-[220px] h-[200px] sm:h-[220px] rounded-[25px] object-cover transition-all duration-300"
+              className="absolute rounded-[25px] object-cover transition-all duration-300 sm:!w-[220px] sm:!h-[220px]"
               style={{
                 zIndex: image.zIndex,
-                transform: `translate(-50%, -50%) rotate(${image.mobileRotation}deg)`,
+                width: m.width,
+                height: m.height,
+                transform: `translate(-50%, -50%) rotate(${m.rotation}deg)`,
                 left: "50%",
                 top: "50%",
                 boxShadow: isTopImage
@@ -99,66 +129,88 @@ export const HeroImageSection = () => {
         })}
       </div>
 
-      {/* Desktop: All images displayed - Perfectly Centered */}
-      <div className="hidden md:flex relative w-full items-center justify-center py-8">
-        <div className="relative w-full max-w-[1195.66px] h-[331.59px] mx-auto">
+      {/* Tablet: md–lg – percentage-based so it scales and never clips */}
+      <div className="hidden md:flex lg:hidden relative w-full items-center justify-center py-8 overflow-visible">
+        <div
+          className="relative w-full max-w-[1195.66px] mx-auto overflow-visible"
+          style={{ aspectRatio: "1195.66 / 331.59" }}
+        >
           {(() => {
-            // Calculate the center offset for the entire group
-            const imagePositions = images.map((image) => {
-              const leftMatch = image.className.match(/left-\[([\d.-]+)px\]/);
-              const widthMatch = image.className.match(/w-\[([\d.]+)px\]/);
-              const left = leftMatch ? parseFloat(leftMatch[1]) : 0;
-              const width = widthMatch ? parseFloat(widthMatch[1]) : 245;
-              return { left, right: left + width };
-            });
-
-            const minLeft = Math.min(...imagePositions.map((p) => p.left));
-            const maxRight = Math.max(...imagePositions.map((p) => p.right));
-            const groupCenter = (minLeft + maxRight) / 2;
-            const containerCenter = 1195.66 / 2;
-            const centerOffset = containerCenter - groupCenter;
+            const designW = 1195.66;
+            const designH = 331.59;
+            const positions = images.map((img) => ({
+              left: img.tablet.left,
+              right: img.tablet.left + img.tablet.width,
+            }));
+            const minLeft = Math.min(...positions.map((p) => p.left));
+            const maxRight = Math.max(...positions.map((p) => p.right));
+            const groupCenterPct = ((minLeft + maxRight) / 2 / designW) * 100;
+            const centerOffsetPct = 50 - groupCenterPct;
 
             return images.map((image, index) => {
-              // Extract values from className
-              const leftMatch = image.className.match(/left-\[([\d.-]+)px\]/);
-              const topMatch = image.className.match(/top-\[([\d.-]+)px\]/);
-              const widthMatch = image.className.match(/w-\[([\d.]+)px\]/);
-              const heightMatch = image.className.match(/h-\[([\d.]+)px\]/);
-
-              const originalLeft = leftMatch ? parseFloat(leftMatch[1]) : 0;
-              const originalTop = topMatch
-                ? parseFloat(topMatch[1])
-                : image.className.includes("-top-1")
-                  ? -4
-                  : image.className.includes("top-6")
-                    ? 24
-                    : image.className.includes("top-1.5")
-                      ? 6
-                      : image.className.includes("top-[25px]")
-                        ? 25
-                        : image.className.includes("top-[40px]")
-                          ? 40
-                          : image.className.includes("top-[3px]")
-                            ? 3
-                            : 0;
-
-              const width = widthMatch ? parseFloat(widthMatch[1]) : 245;
-              const height = heightMatch ? parseFloat(heightMatch[1]) : 246;
-
-              // Apply the same center offset to all images
-              const centeredLeft = originalLeft + centerOffset;
-
+              const t = image.tablet;
+              const leftPct = (t.left / designW) * 100 + centerOffsetPct;
+              const widthPct = (t.width / designW) * 100;
+              const topPct = (t.top / designH) * 100;
+              const heightPct = (t.height / designH) * 100;
               return (
                 <img
                   key={index}
                   className="absolute rounded-[25px] object-cover shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]"
                   style={{
                     zIndex: image.zIndex,
-                    transform: `rotate(${image.rotation}deg)`,
-                    left: `${centeredLeft}px`,
-                    top: `${originalTop}px`,
-                    width: `${width}px`,
-                    height: `${height}px`,
+                    left: `${leftPct}%`,
+                    top: `${topPct}%`,
+                    width: `${widthPct}%`,
+                    height: `${heightPct}%`,
+                    transform: `rotate(${t.rotation}deg)`,
+                    boxShadow:
+                      "0 15px 35px rgba(0, 0, 0, 0.12), 0 5px 15px rgba(0, 0, 0, 0.08)",
+                  }}
+                  alt={image.alt}
+                  src={image.src}
+                />
+              );
+            });
+          })()}
+        </div>
+      </div>
+
+      {/* Desktop: lg+ – percentage-based so it scales on all screen sizes */}
+      <div className="hidden lg:flex relative w-full items-center justify-center py-8 overflow-visible">
+        <div
+          className="relative w-full max-w-[1376px] mx-auto overflow-visible"
+          style={{ aspectRatio: "1376 / 382" }}
+        >
+          {(() => {
+            const designW = 1376;
+            const designH = 382;
+            const positions = images.map((img) => ({
+              left: img.desktop.left,
+              right: img.desktop.left + img.desktop.width,
+            }));
+            const minLeft = Math.min(...positions.map((p) => p.left));
+            const maxRight = Math.max(...positions.map((p) => p.right));
+            const groupCenterPct = ((minLeft + maxRight) / 2 / designW) * 100;
+            const centerOffsetPct = 50 - groupCenterPct;
+
+            return images.map((image, index) => {
+              const d = image.desktop;
+              const leftPct = (d.left / designW) * 100 + centerOffsetPct;
+              const widthPct = (d.width / designW) * 100;
+              const topPct = (d.top / designH) * 100;
+              const heightPct = (d.height / designH) * 100;
+              return (
+                <img
+                  key={index}
+                  className="absolute rounded-[25px] object-cover shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]"
+                  style={{
+                    zIndex: image.zIndex,
+                    left: `${leftPct}%`,
+                    top: `${topPct}%`,
+                    width: `${widthPct}%`,
+                    height: `${heightPct}%`,
+                    transform: `rotate(${d.rotation}deg)`,
                     boxShadow:
                       "0 15px 35px rgba(0, 0, 0, 0.12), 0 5px 15px rgba(0, 0, 0, 0.08)",
                   }}

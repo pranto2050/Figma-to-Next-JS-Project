@@ -10,7 +10,7 @@ import { HeroImageSection } from "../HeroImageSection/HeroImageSection";
 export const HeroSection = () => {
   return (
     <div
-      className="hero-container bg-cover bg-center h-100% pt-4 sm:pt-6 md:pt-8 lg:pt-10 pb-20 sm:pb-24 md:pb-32 lg:pb-40"
+      className="hero-container relative bg-cover bg-center h-100% pt-4 sm:pt-6 md:pt-8 lg:pt-10 pb-20 sm:pb-24 md:pb-32 lg:pb-40 "
       style={{
         backgroundImage: "url(/Img/Home%20Background2.png)",
       }}
@@ -22,7 +22,7 @@ export const HeroSection = () => {
         <HeroImageSection />
       </div>
 
-      <div className="absolute top-10 left-0 w-full h-full z-20">
+      <div className="absolute top-10 left-0 w-full z-20">
         <Image
           src={ellipse2}
           alt="Decorative ellipse"
