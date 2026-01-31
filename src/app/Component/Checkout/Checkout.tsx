@@ -6,6 +6,7 @@ import { useCart } from "../../context/CartContext";
 import { getCheckoutProduct } from "../../data/checkoutProducts";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   ShoppingBag,
   Trash2,
@@ -13,13 +14,18 @@ import {
   Minus,
   CheckCircle2,
   CreditCard,
+  X,
+  PartyPopper,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Checkout() {
+  const router = useRouter();
   const { items, removeItem, updateQuantity, clearCart } = useCart();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [checkoutSuccess, setCheckoutSuccess] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [modalAnimated, setModalAnimated] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -63,7 +69,36 @@ export default function Checkout() {
     setCheckoutSuccess(true);
     clearCart();
     setIsSubmitting(false);
+    setShowSuccessModal(true);
   };
+
+  const closeSuccessModal = () => {
+    setShowSuccessModal(false);
+    setCheckoutSuccess(false);
+  };
+
+  // Prevent body scroll when success modal is open + trigger entrance animation
+  useEffect(() => {
+    if (showSuccessModal) {
+      document.body.style.overflow = "hidden";
+      setModalAnimated(false);
+      const frame = requestAnimationFrame(() => {
+        requestAnimationFrame(() => setModalAnimated(true));
+      });
+      const handleEscape = (e: KeyboardEvent) => {
+        if (e.key === "Escape") closeSuccessModal();
+      };
+      document.addEventListener("keydown", handleEscape);
+      return () => {
+        cancelAnimationFrame(frame);
+        document.body.style.overflow = "";
+        document.removeEventListener("keydown", handleEscape);
+      };
+    }
+    document.body.style.overflow = "";
+    setModalAnimated(false);
+    return undefined;
+  }, [showSuccessModal]);
 
   const isEmpty = cartWithProducts.length === 0 && !checkoutSuccess;
 
@@ -92,38 +127,90 @@ export default function Checkout() {
           </div>
         </section>
 
-        {/* Checkout Successful state */}
-        {checkoutSuccess && (
-          <section className="px-4 sm:px-6 md:px-8 pb-16 sm:pb-20 md:pb-24">
-            <div className="max-w-xl mx-auto">
-              <div className="rounded-xl sm:rounded-2xl border border-[#FF8000] bg-white/50 backdrop-blur-sm shadow-[0_18px_60px_rgba(0,0,0,0.25)] p-6 sm:p-8 md:p-10 text-center">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-full bg-[#FF8000]/20 flex items-center justify-center mb-4 sm:mb-6">
-                  <CheckCircle2 className="w-10 h-10 sm:w-12 sm:h-12 text-[#FF8000]" />
+        {/* Checkout Successful – pop-up modal */}
+        {showSuccessModal && (
+          <div
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="success-modal-title"
+            aria-describedby="success-modal-desc"
+          >
+            {/* Backdrop – click to close */}
+            <div
+              className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${modalAnimated ? "opacity-100" : "opacity-0"}`}
+              onClick={closeSuccessModal}
+              aria-hidden="true"
+            />
+            {/* Modal card */}
+            <div
+              className={`relative w-full max-w-md sm:max-w-lg rounded-2xl sm:rounded-3xl border-2 border-[#FF8000] bg-white shadow-[0_25px_80px_rgba(0,0,0,0.35)] overflow-hidden transition-all duration-300 ${modalAnimated ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Decorative top bar */}
+              <div className="h-1.5 sm:h-2 bg-gradient-to-r from-[#FF8000] via-[#ff9f3d] to-[#FF8000]" />
+              <div className="p-6 sm:p-8 md:p-10">
+                {/* Close button */}
+                <button
+                  type="button"
+                  onClick={closeSuccessModal}
+                  className="absolute top-4 right-4 sm:top-5 sm:right-5 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/5 hover:bg-black/10 text-black/70 hover:text-black flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-[#FF8000] focus:ring-offset-2"
+                  aria-label="Close"
+                >
+                  <X className="w-5 h-5 sm:w-5 sm:h-5" />
+                </button>
+
+                {/* Success icon with subtle animation */}
+                <div className="flex justify-center mb-5 sm:mb-6">
+                  <div className="relative">
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#FF8000]/15 flex items-center justify-center ring-4 ring-[#FF8000]/20">
+                      <CheckCircle2 className="w-12 h-12 sm:w-14 sm:h-14 text-[#FF8000]" strokeWidth={2} />
+                    </div>
+                    <div className="absolute -bottom-1 -right-1 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#22c55e]/90 flex items-center justify-center shadow-lg">
+                      <PartyPopper className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                    </div>
+                  </div>
                 </div>
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-black mb-2">
+
+                <h2
+                  id="success-modal-title"
+                  className="text-xl sm:text-2xl md:text-3xl font-bold text-center text-black mb-2"
+                >
                   Checkout Successful
                 </h2>
-                <p className="text-sm sm:text-base text-black/80 mb-6 sm:mb-8">
+                <p
+                  id="success-modal-desc"
+                  className="text-sm sm:text-base text-center text-black/75 mb-6 sm:mb-8 max-w-sm mx-auto leading-relaxed"
+                >
                   Thank you for your order. We&apos;ll send a confirmation to your email shortly.
                 </p>
+
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-                  <Link
-                    href="/products"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#FF8000] text-white font-semibold hover:bg-[#e67300] transition-colors text-sm sm:text-base"
+                  <button
+                    type="button"
+                    onClick={() => {
+                      closeSuccessModal();
+                      router.push("/products");
+                    }}
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#FF8000] text-white font-semibold hover:bg-[#e67300] active:scale-[0.98] transition-all text-sm sm:text-base shadow-lg shadow-[#FF8000]/25"
                   >
-                    <ShoppingBag className="w-4 h-4" />
+                    <ShoppingBag className="w-4 h-4 flex-shrink-0" />
                     Continue Shopping
-                  </Link>
-                  <Link
-                    href="/"
-                    className="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-[#FF8000] text-[#FF8000] font-semibold hover:bg-[#FF8000]/10 transition-colors text-sm sm:text-base"
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      closeSuccessModal();
+                      router.push("/");
+                    }}
+                    className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl border-2 border-[#FF8000] text-[#FF8000] font-semibold hover:bg-[#FF8000]/10 active:scale-[0.98] transition-all text-sm sm:text-base"
                   >
                     Back to Home
-                  </Link>
+                  </button>
                 </div>
               </div>
             </div>
-          </section>
+          </div>
         )}
 
         {/* Empty cart state */}
@@ -405,8 +492,6 @@ export default function Checkout() {
             </form>
           </section>
         )}
-
-        <FooterSection />
       </div>
     </div>
   );

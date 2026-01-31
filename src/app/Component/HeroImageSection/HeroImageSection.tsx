@@ -90,7 +90,7 @@ const images: HeroImage[] = [
 
 export const HeroImageSection = () => {
   return (
-    <section className="flex flex-col w-full max-w-[1196px] rounded-[30px] pt-8 sm:pt-12 md:pt-16 lg:pt-20 items-center gap-6 sm:gap-8 md:gap-[30px] mx-auto px-4 md:px-10 overflow-visible">
+    <section className="flex mt-10 flex-col w-full max-w-[1196px] rounded-[30px] pt-8 sm:pt-12 md:pt-16 lg:pt-20 items-center gap-6 sm:gap-8 md:gap-[30px] mx-auto px-4 md:px-10 overflow-visible">
       <header className="flex flex-col items-center justify-center w-full mt-[-1.00px]">
         <h1 className="font-['Helvetica_Now_Display-Bold',Helvetica] font-bold text-black text-[28px] sm:text-[32px] md:text-[42px] lg:text-[50px] text-center tracking-[0] leading-[38px] sm:leading-[45px] md:leading-[60px] lg:leading-[70px]">
           Life Feels Better Offline

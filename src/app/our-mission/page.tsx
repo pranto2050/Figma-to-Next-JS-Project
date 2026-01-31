@@ -36,9 +36,6 @@ const OurMissionPage = () => {
         </div>
 
         <section className="space-y-3 sm:space-y-4 md:space-y-6 flex flex-col items-center text-center px-4 sm:px-6 md:px-8 lg:px-16 py-10 sm:py-16 md:pb-20 lg:pb-24 bg-[url('/Img/Our%20Mission%20Background.png')] bg-cover bg-center">
-          <p className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-black/60 uppercase">
-            Our Mission
-          </p>
           <h1 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight">
             Discover Our Mission and Values
           </h1>
