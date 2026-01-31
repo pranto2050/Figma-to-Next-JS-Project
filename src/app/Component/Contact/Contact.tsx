@@ -257,8 +257,6 @@ export default function Contact() {
             </div>
           </div>
         </section>
-
-      <FooterSection />
       </div>
     </div>
   );
