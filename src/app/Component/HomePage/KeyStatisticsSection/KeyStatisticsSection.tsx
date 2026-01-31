@@ -10,7 +10,7 @@ import bedImg from "../../../../../public/bed.png"
 export const KeyStatisticsSection = () => {
   return (
     <section 
-      className=" px-10 relative bg-repeat-y pt-10 px-4 sm:px-6 md:px-12 lg:px-20 bg-[#ffead8]"
+      className=" relative bg-repeat-y pt-10 md:px-4 sm:px-6 md:px-12 lg:px-20 bg-[#ffead8]"
       style={{ backgroundImage: "url('/Main Background.png')" }}
     >
       {/* Watermark */}
@@ -26,7 +26,7 @@ export const KeyStatisticsSection = () => {
         >
           
           <span
-            className="text-[120px] sm:text-[180px] md:text-[250px] lg:text-[350px] font-bold block w-full"
+            className="text-[120px] mt-2 sm:text-[180px] md:text-[250px] lg:text-[350px] font-bold block w-full"
             style={{ 
               fontFamily: "'Helvetica Now Display', Helvetica",
               backgroundImage: "linear-gradient(150deg, rgba(255, 128, 0, 1) 0%, rgba(255, 128, 0, 0.1) 50%)",
@@ -39,6 +39,7 @@ export const KeyStatisticsSection = () => {
         </div>
       </div>
       
+      <div className="px-10">
         <div className="flex justify-center mb-3 md:mb-10">
             <button className="w-[40%] md:w-52.5 h-10 md:h-8.75 outline-[1px] outline-[#ff7f00] bg-[#FFEAD8] hover:bg-[#ff7f00]/90 text-black rounded-[100px] border border-solid border-[#ffe6e0] font-['Helvetica_Now_Display-Medium',Helvetica] font-medium text-base tracking-[0] leading-5 transition-colors">
             A Raising Issue
@@ -111,6 +112,8 @@ export const KeyStatisticsSection = () => {
             <button className="w-50 md:w-52.5 h-10 md:h-8.75 outline-[1px] outline-[#ff7f00] bg-[#FFEAD8] hover:bg-[#ff7f00]/90 text-black rounded-[100px] border border-solid border-[#ffe6e0] font-['Helvetica_Now_Display-Medium',Helvetica] font-medium text-base tracking-[0] leading-5 transition-colors">
             Why choose us?
             </button>
+        </div>
+
         </div>
 
           <div className="mt-8 md:top-10">
